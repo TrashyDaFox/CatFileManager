@@ -1,5 +1,6 @@
 <div align="center">
-# Cat File Manager
+<h1>Cat File Manager</h1>
+An advanced Linux-focused file manager.
 </div>
 
 ![alt text](image.png)

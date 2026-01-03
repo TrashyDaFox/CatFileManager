@@ -1,0 +1,16 @@
+from PySide6.QtGui import QFont
+
+TEXT_XS = QFont()
+TEXT_XS.setPixelSize(10)
+TEXT_SM = QFont()
+TEXT_SM.setPixelSize(12)
+TEXT_MD = QFont()
+TEXT_MD.setPixelSize(14)
+TEXT_LG = QFont()
+TEXT_LG.setPixelSize(18)
+TEXT_XL = QFont()
+TEXT_XL.setPixelSize(20)
+TEXT_XXL = QFont()
+TEXT_XXL.setPixelSize(24)
+TEXT_XXXL = QFont()
+TEXT_XXXL.setPixelSize(64)

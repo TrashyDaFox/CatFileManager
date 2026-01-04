@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QDialog, Q
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
 from app.text import TEXT_LG
-import app_config
+import app.app_config as app_config
 class SettingsDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)

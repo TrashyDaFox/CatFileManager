@@ -5,8 +5,8 @@ a = Analysis(
     ['app/main.py'],
     pathex=[],
     binaries=[],
-    datas=[('app/assets', 'assets')],
-    hiddenimports=[],
+    datas=[('app', 'app'), ('app/assets', 'assets')],
+    hiddenimports=['PySide6.QtCore', 'PySide6.QtGui', 'PySide6.QtWidgets'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -34,5 +34,6 @@ exe = EXE(
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
+    
     entitlements_file=None,
 )

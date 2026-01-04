@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QDialog, QVBoxLayout, QLabel, QTabWidget, QWidget, QHBoxLayout
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
-from text import TEXT_LG
+from app.text import TEXT_LG
 import app_config
 class SettingsDialog(QDialog):
     def __init__(self, parent=None):

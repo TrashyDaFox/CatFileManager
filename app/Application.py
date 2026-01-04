@@ -1,9 +1,9 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QToolBar, QLabel, QVBoxLayout, QWidget, QListView, QFileSystemModel, QLineEdit, QDockWidget, QSplitter, QTreeView, QAbstractItemView, QTableView, QMenu, QStyleFactory, QSizePolicy, QGraphicsOpacityEffect, QMessageBox, QTabWidget, QPushButton, QHBoxLayout, QInputDialog
 from PySide6.QtGui import QIcon, QAction, QActionGroup, QPalette, QColor, QFontDatabase, QFont
 from PySide6.QtCore import Qt, QSize, QDir, QObject, QEvent, QUrl, QMimeData
-from text import TEXT_MD, TEXT_XXXL
-from settings import SettingsDialog
-from app_config import PRODUCT_NAME, DEBUG
+from app.text import TEXT_MD, TEXT_XXXL
+from app.settings import SettingsDialog
+from app.app_config import PRODUCT_NAME, DEBUG
 import qdarkstyle
 import config_api
 import shutil

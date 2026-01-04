@@ -525,7 +525,7 @@ class Application:
                     if os.path.exists(dest_path):
                         msg = QMessageBox()
                         msg.setWindowTitle("File Conflict")
-                        msg.setText(f"The {"folder" if os.path.isdir(src_path) else "file"} already exists here.")
+                        msg.setText(f"The {'folder' if os.path.isdir(src_path) else 'file'} already exists here.")
                         msg.setInformativeText("What do you want to do?")
                         overwrite_btn = msg.addButton("Overwrite", QMessageBox.YesRole)
                         skip_btn = msg.addButton("Skip", QMessageBox.NoRole)

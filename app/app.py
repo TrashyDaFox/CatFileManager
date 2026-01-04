@@ -13,6 +13,10 @@ from urllib.parse import urlparse, unquote
 import subprocess
 import platform
 from pathlib import Path
+def resource_path(relative_path):
+    # If running from PyInstaller bundle, _MEIPASS points to temp dir
+    base_path = getattr(sys, "_MEIPASS", os.path.abspath("."))
+    return os.path.join(base_path, relative_path)
 class PaneClickFilter(QObject):
     def __init__(self, app, panelID):
         super().__init__()
@@ -36,7 +40,7 @@ class Application:
             self.app.setStyle("Breeze")
         self.active_color = "#ff85bc"
         self.inactive_color = "#cf1f6e"
-        font_id = QFontDatabase.addApplicationFont("./assets/MaterialIcons-Regular.ttf")
+        font_id = QFontDatabase.addApplicationFont(resource_path("assets/MaterialIcons-Regular.ttf"))
         if font_id == -1:
             print("Failed to load font :<")
         else:
@@ -46,7 +50,7 @@ class Application:
         self.window.show()
         self.config = config_api.Config()
         self.window.setMinimumSize(900, 500)
-        self.window.setWindowIcon(QIcon("./assets/app_icon"))
+        self.window.setWindowIcon(QIcon(resource_path("/assets/app_icon")))
         self.window.setWindowTitle(f"{PRODUCT_NAME} - {Path.home()}")
         self.currentSide = "left"
         path_left = self.config.get("path_left")

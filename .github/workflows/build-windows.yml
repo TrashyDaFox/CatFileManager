@@ -20,10 +20,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller
+          pip install PySide6
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile --name Cat --add-data "assets/*;assets" --add-data "image.png;." --hidden-import app --hidden-import app_config --hidden-import config_api --hidden-import library --hidden-import settings --hidden-import text --hidden-import utils main.py
+          pyinstaller Cat.spec
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

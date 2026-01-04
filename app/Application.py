@@ -165,7 +165,7 @@ class Application:
     def update_browsers(self):
         for pane2 in self.instances[self.currentInstance]["panes"]:
             pane = self.instances[self.currentInstance]["panes"][pane2]
-            path = self.instances[self.currentInstance][f"path_{pane["id"]}"]
+            path = self.instances[self.currentInstance][f"path_{pane['id']}"]
             pane["listView"].setRootIndex(self.model.index(path))
     def update_borders(self):
         for pane_id, pane in self.instances[self.currentInstance]["panes"].items():

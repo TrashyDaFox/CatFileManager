@@ -2,7 +2,9 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QToolBar, QLabel, QVBox
 from PySide6.QtGui import QIcon, QAction, QActionGroup, QPalette, QColor, QFontDatabase, QFont
 from PySide6.QtCore import Qt, QSize, QDir, QObject, QEvent, QUrl, QMimeData
 from text import TEXT_MD, TEXT_XXXL
+from settings import SettingsDialog
 from app_config import PRODUCT_NAME, DEBUG
+import qdarkstyle
 import config_api
 import shutil
 import sys
@@ -26,6 +28,12 @@ class PaneClickFilter(QObject):
 class Application:
     def __init__(self):
         self.app = QApplication(sys.argv)
+        
+        # self.app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt6())
+        print(QStyleFactory.keys())
+        if "Breeze" in QStyleFactory.keys():
+            print("Using breeze")
+            self.app.setStyle("Breeze")
         self.active_color = "#ff85bc"
         self.inactive_color = "#cf1f6e"
         font_id = QFontDatabase.addApplicationFont("./assets/MaterialIcons-Regular.ttf")
@@ -67,8 +75,8 @@ class Application:
         self.centralWidget = QWidget()
         self.centralWidget.setLayout(self.appContent)
         self.window.setCentralWidget(self.centralWidget)
-        self.TEXT_ICON = QFont("Material Icons", 14)
-        self.TEXT_ICON.setPixelSize(14)
+        self.TEXT_ICON = QFont("Material Icons", 19)
+        self.TEXT_ICON.setPixelSize(19)
         self.setupToolbars()
         self.setupTabs()
         for i in range(len(self.instances)):
@@ -103,6 +111,9 @@ class Application:
 
         if self.currentInstance >= len(self.instances):
             self.currentInstace = len(self.instances) - 1
+
+        if len(self.instances) == 0:
+            self.window.close()
     def on_tab_double_clicked(self, index):
         if index == -1:
             return
@@ -142,9 +153,9 @@ class Application:
             p = self.app.palette()
             base = p.color(p.ColorRole.Window)
             accent = p.color(p.ColorRole.Highlight)
-            stylesheet = f"background-color: rgba({base.red()}, {base.green()}, {base.blue()}, 100);"
+            stylesheet = f"background-color: rgba({base.red()}, {base.green()}, {base.blue()}, 127);"
             overlay.setStyleSheet(stylesheet)  # semi-transparent black
-            stylesheet2 = f"border: 2px solid rgb({accent.red()}, {accent.green()}, {accent.blue()});"
+            stylesheet2 = f"border: 2px solid rgb({accent.red()}, {accent.green()}, {accent.blue()});background-color: rgba(0, 0, 0, 0);"
             border.setStyleSheet(stylesheet2)  # semi-transparent black
 
     def update_browsers(self):
@@ -419,14 +430,23 @@ class Application:
 
         toolbar2.addAction(self.forward_action)
 
+        settings_action = QAction("\ue8b8", self.window)
+        settings_action.setFont(self.TEXT_ICON)
+        settings_action.triggered.connect(self.open_settings)
+        settings_action.setStatusTip("Open the settings! :3")
+        toolbar.addAction(settings_action)
         if DEBUG:
-            dev_action = QAction("DEV", self.window)
+            dev_action = QAction("\ue869", self.window)
             dev_action.setStatusTip("This is a debug menu")
+            dev_action.setFont(self.TEXT_ICON)
             dev_action.triggered.connect(self.dev_menu)
             toolbar.addAction(dev_action)
 
-        # self.window.addToolBar(toolbar)
+        self.window.addToolBar(toolbar)
         self.appContent.addWidget(toolbar2)
+    def open_settings(self):
+        settings = SettingsDialog(self.window)
+        settings.exec()
     def getActivePath(self):
         return self.instances[self.currentInstance][f"path_{self.currentSide}"]
     def up(self):

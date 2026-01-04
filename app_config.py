@@ -1,2 +1,3 @@
 PRODUCT_NAME = "Cat"
 DEBUG = True
+VERSION = "0.1 PRE-ALPHA"

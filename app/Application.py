@@ -4,8 +4,7 @@ from PySide6.QtCore import Qt, QSize, QDir, QObject, QEvent, QUrl, QMimeData
 from app.text import TEXT_MD, TEXT_XXXL
 from app.settings import SettingsDialog
 from app.app_config import PRODUCT_NAME, DEBUG
-import qdarkstyle
-import config_api
+import app.config_api as config_api
 import shutil
 import sys
 import os

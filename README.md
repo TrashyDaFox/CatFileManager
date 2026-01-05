@@ -32,6 +32,18 @@ It's made in Python and using PySide6 for Qt stuff. I like that because it uses 
 - [ ] Network file server support (SMB)
 - [ ] Terminal emulator
 - [ ] Slideshows
+- [ ] Search
+- [ ] Batch renaming
+- [ ] Customizable toolbars
+- [ ] Customizable hotkeys
+- [ ] Archive support (ZIP)
+- [ ] Archive support (RAR)
+- [ ] Archive support (TAR)
+- [ ] Archive support (7Z)
+- [x] Home button
+- [x] Up button
+- [ ] Back/Forward buttons
+- [ ] Undo/redo for file operations
 
 ---
 
